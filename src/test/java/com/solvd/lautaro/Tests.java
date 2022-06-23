@@ -22,7 +22,6 @@ public class Tests implements IAbstractTest {
             LOGGER.info("test");
             GetWeatherMethod api = new GetWeatherMethod();
             api.callAPIExpectSuccess();
-            api.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
             api.validateResponseAgainstSchema("api/weather/_get/rs.schema");
     }
 
@@ -48,5 +47,6 @@ public class Tests implements IAbstractTest {
     public void testSomething() throws Exception {
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
+        api.validateResponse(JSONCompareMode.LENIENT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }
 }

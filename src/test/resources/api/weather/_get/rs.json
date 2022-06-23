@@ -23,7 +23,8 @@
     "visibility": "type:Integer",
     "wind": {
       "speed": "type:Double",
-      "deg": "type:Integer"
+      "deg": "type:Integer",
+      "gust": "type:Double"
     },
     "clouds": {
       "all": "type:Integer"
