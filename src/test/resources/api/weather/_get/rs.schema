@@ -90,15 +90,11 @@
         },
         "deg": {
           "type": "integer"
-        },
-        "gust": {
-          "type": "number"
         }
       },
       "required": [
         "speed",
-        "deg",
-        "gust"
+        "deg"
       ]
     },
     "clouds": {

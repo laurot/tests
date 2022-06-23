@@ -1,3 +1,5 @@
 
 .vscode
 target
+src/main/resources/crypto.key
+reports

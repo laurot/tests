@@ -1,15 +1,17 @@
 package com.solvd.lautaro;
 
 import java.lang.invoke.MethodHandles;
+import java.time.temporal.ChronoUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.junit.Test;
 import org.skyscreamer.jsonassert.JSONCompareMode;
-
 import com.qaprosoft.apitools.validation.JsonCompareKeywords;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-
-import api.GetWeatherMethod;
+import com.qaprosoft.carina.core.foundation.api.APIMethodPoller;
+import com.solvd.api.GetWeatherMethod;
+import com.solvd.api.PostWeatherMethod;
 
 public class Tests implements IAbstractTest {
     
@@ -25,9 +27,26 @@ public class Tests implements IAbstractTest {
     }
 
     @Test()
-    public void testSomething() throws Exception{
+    public void testCreateWeather() throws Exception{
+        LOGGER.info("test");
+        setCases("4555,54545");
+        PostWeatherMethod api = new PostWeatherMethod();
+        
+        AtomicInteger counter = new AtomicInteger(0);
+
+        api.callAPIWithRetry()
+                .withLogStrategy(APIMethodPoller.LogStrategy.ALL)
+                .peek(rs -> counter.getAndIncrement())
+                .until(rs -> counter.get() == 4)
+                .pollEvery(1, ChronoUnit.SECONDS)
+                .stopAfter(10, ChronoUnit.SECONDS)
+                .execute();
+        api.validateResponse();
+    }
+
+    @Test()
+    public void testSomething() throws Exception {
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
-        api.validateResponse(mode, comparatorContext, validationFlags);
     }
 }
