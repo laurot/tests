@@ -38,15 +38,28 @@ public class Tests implements IAbstractTest {
                 .peek(rs -> counter.getAndIncrement())
                 .until(rs -> counter.get() == 4)
                 .pollEvery(1, ChronoUnit.SECONDS)
-                .stopAfter(10, ChronoUnit.SECONDS)
+                .stopAfter(5, ChronoUnit.SECONDS)
                 .execute();
-        api.validateResponse();
+        api.validateResponse(JSONCompareMode.LENIENT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }
 
     @Test()
-    public void testSomething() throws Exception {
+    public void testTexarkana() throws Exception {
+        GetWeatherMethod api = new GetWeatherMethod();
+        api.callAPIExpectSuccess()
+                .asString()
+                .contains("Texarkana");
+    }
+
+    @Test()
+    public void testSomethingElse() throws Exception{
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
-        api.validateResponse(JSONCompareMode.LENIENT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+    }
+
+    @Test()
+    public void testSomething() throws Exception{
+        GetWeatherMethod api = new GetWeatherMethod();
+        api.callAPIExpectSuccess();
     }
 }
