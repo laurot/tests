@@ -5,11 +5,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import com.qaprosoft.apitools.validation.JsonCompareKeywords;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.qaprosoft.carina.core.foundation.api.APIMethodPoller;
 import com.solvd.api.GetWeatherMethod;
 import com.solvd.api.PostWeatherMethod;
 
@@ -27,18 +26,15 @@ public class Tests implements IAbstractTest {
 
     @Test()
     public void testCreateWeather() throws Exception{
-        LOGGER.info("test");
-        setCases("4555,54545");
+
         PostWeatherMethod api = new PostWeatherMethod();
-        
         AtomicInteger counter = new AtomicInteger(0);
 
         api.callAPIWithRetry()
-                .withLogStrategy(APIMethodPoller.LogStrategy.LAST_ONLY)
                 .peek(rs -> counter.getAndIncrement())
                 .until(rs -> counter.get() == 4)
                 .pollEvery(1, ChronoUnit.SECONDS)
-                .stopAfter(5, ChronoUnit.SECONDS)
+                .stopAfter(3, ChronoUnit.SECONDS)
                 .execute();
         api.validateResponse(JSONCompareMode.LENIENT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }

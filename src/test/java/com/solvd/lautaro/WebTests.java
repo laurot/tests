@@ -1,6 +1,6 @@
 package com.solvd.lautaro;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
