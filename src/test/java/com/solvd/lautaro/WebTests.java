@@ -1,6 +1,8 @@
 package com.solvd.lautaro;
 
 import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
@@ -12,11 +14,15 @@ public class WebTests implements IAbstractTest{
     
     @Test()
     public void testSomething(){
-        HomePage homePage = new HomePage(getDriver());
+
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe"); 
+        WebDriver driver = new ChromeDriver();
+
+        HomePage homePage = new HomePage(driver);
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "home page is not opened");
 
-        homePage = new HomePage(getDriver());
+        homePage = new HomePage(driver);
         ItemPage itemPage = homePage.selectModel("Nexus 6");
         
         SoftAssert softAssert = new SoftAssert();

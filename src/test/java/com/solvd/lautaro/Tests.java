@@ -34,7 +34,7 @@ public class Tests implements IAbstractTest {
         AtomicInteger counter = new AtomicInteger(0);
 
         api.callAPIWithRetry()
-                .withLogStrategy(APIMethodPoller.LogStrategy.ALL)
+                .withLogStrategy(APIMethodPoller.LogStrategy.LAST_ONLY)
                 .peek(rs -> counter.getAndIncrement())
                 .until(rs -> counter.get() == 4)
                 .pollEvery(1, ChronoUnit.SECONDS)
