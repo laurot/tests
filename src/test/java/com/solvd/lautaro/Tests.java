@@ -58,7 +58,7 @@ public class Tests implements IAbstractTest {
     }
 
     @Test()
-    public void testSomethingElseAgain() throws Exception{
+    public void testSomething() throws Exception{
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
     }
