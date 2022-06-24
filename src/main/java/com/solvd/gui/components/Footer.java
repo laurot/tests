@@ -6,13 +6,13 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
-public class FooterMenu extends AbstractUIObject{
+public class Footer extends AbstractUIObject{
     
-    public FooterMenu(WebDriver driver, SearchContext searchContext) {
+    public Footer(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-    @FindBy(id = "footmenu")
-    private FooterMenu footerMenu;
-    
+    @FindBy(id = "footc")
+    private Footer footer;
+
 }
