@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import com.qaprosoft.carina.core.foundation.utils.Configuration;
-import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.solvd.gui.components.Footer;
 import com.solvd.gui.components.Item;
@@ -21,10 +18,9 @@ public class HomePage extends AbstractPage{
 
     public HomePage(WebDriver driver) {
         super(driver);
-        setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
     }
 
-    public ItemPage selectModel(String itemName) {
+    public ItemPage selectItem(String itemName) {
         for (Item item : items) {
             if (item.readName().equalsIgnoreCase(itemName)) {
                 return item.openItemPage();

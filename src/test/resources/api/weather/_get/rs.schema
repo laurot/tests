@@ -97,9 +97,9 @@
       },
       "required": [
         "speed",
-        "deg",
-        "gust"
-      ]
+        "deg"
+      ],
+      "additionalProperties": true
     },
     "clouds": {
       "type": "object",

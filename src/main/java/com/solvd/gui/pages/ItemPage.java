@@ -8,14 +8,17 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 
 public class ItemPage extends AbstractPage{
 
-    @FindBy(xpath = "/html/body/div[5]/div/div[1]")
+    @FindBy(xpath = "//*[@id='tbodyid']/h2")
     private ExtendedWebElement name;
 
-    @FindBy(xpath = "/html/body/div[5]/div/div[2]/h3")
+    @FindBy(xpath = "//*[@id='tbodyid']/h3")
     private ExtendedWebElement price;
     
-    @FindBy(xpath = "/html/body/div[5]/div/div[2]/div[1]/div/div/p")
+    @FindBy(xpath = "//*[@id='more-information']/p/")
     private ExtendedWebElement description;
+
+    @FindBy(xpath = "//*[@id='tbodyid']/div[2]/div/a")
+    private ExtendedWebElement addToCartButton;
 
     public ItemPage(WebDriver driver) {
         super(driver);
@@ -33,4 +36,5 @@ public class ItemPage extends AbstractPage{
         assertElementPresent(description);
         return description.getText();
     }
+
 }

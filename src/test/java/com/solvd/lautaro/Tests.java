@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import com.qaprosoft.apitools.validation.JsonCompareKeywords;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.solvd.api.GetWeatherMethod;
 import com.solvd.api.PostWeatherMethod;
 
@@ -16,7 +17,8 @@ public class Tests implements IAbstractTest {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    @Test()
+    @Test(description = "")
+    @MethodOwner(owner = "Lautaro")
     public void testGetWeather() throws Exception{
             LOGGER.info("test");
             GetWeatherMethod api = new GetWeatherMethod();
@@ -24,7 +26,8 @@ public class Tests implements IAbstractTest {
             api.validateResponseAgainstSchema("api/weather/_get/rs.schema");
     }
 
-    @Test()
+    @Test(description = "")
+    @MethodOwner(owner = "Lautaro")
     public void testCreateWeather() throws Exception{
 
         PostWeatherMethod api = new PostWeatherMethod();
@@ -39,7 +42,8 @@ public class Tests implements IAbstractTest {
         api.validateResponse(JSONCompareMode.LENIENT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }
 
-    @Test()
+    @Test(description = "")
+    @MethodOwner(owner = "Lautaro")
     public void testTexarkana() throws Exception {
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess()
@@ -47,13 +51,15 @@ public class Tests implements IAbstractTest {
                 .contains("Texarkana");
     }
 
-    @Test()
+    @Test(description = "")
+    @MethodOwner(owner = "Lautaro")
     public void testSomethingElse() throws Exception{
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
     }
 
-    @Test()
+    @Test(description = "")
+    @MethodOwner(owner = "Lautaro")
     public void testSomething() throws Exception{
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
