@@ -1,8 +1,5 @@
 {
-  "coord": {
-    "lon": "type:Double",
-    "lat": "type:Double"
-  },
+  "coord": {"lon": "type:Double","lat": "type:Double"},
   "weather": [
     {
       "id": "type:Integer",
@@ -23,8 +20,7 @@
   "visibility": "type:Integer",
   "wind": {
     "speed": "type:Double",
-    "deg": "type:Integer",
-    "gust": "type:Double"
+    "deg": "type:Integer"
   },
   "clouds": {
     "all": "type:Integer"
