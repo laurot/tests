@@ -132,7 +132,6 @@
       "required": [
         "type",
         "id",
-        "message",
         "country",
         "sunrise",
         "sunset"
