@@ -14,8 +14,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
+    <carina-core_version>7.3.20</carina-core_version>
+    <java.version>11</java.version>
+    <zebrunner-agent.version>1.6.7</zebrunner-agent.version>
+    <suite>helloWorld</suite>
   </properties>
 
   <dependencies>
@@ -33,6 +35,13 @@
       <version>3.5.10</version>
     </dependency>
 
+    <dependency>
+      <!--we need it to reuse benefits of zebrunner testng agent for webdriver
+          sesssion(s) declaration -->
+      <groupId>net.bytebuddy</groupId>
+      <artifactId>byte-buddy</artifactId>
+      <version>1.10.18</version>
+    </dependency>
 
     <dependency>
       <groupId>com.qaprosoft</groupId>
