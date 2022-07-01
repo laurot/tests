@@ -17,7 +17,7 @@ public class Tests implements IAbstractTest {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
-    @Test(description = "")
+    @Test(description = "Validates against schema")
     @MethodOwner(owner = "Lautaro")
     public void testGetWeather() throws Exception{
             LOGGER.info("test");
@@ -26,7 +26,7 @@ public class Tests implements IAbstractTest {
             api.validateResponseAgainstSchema("api/weather/_get/rs.schema");
     }
 
-    @Test(description = "")
+    @Test(description = "Validates 4 times using rq.json")
     @MethodOwner(owner = "Lautaro")
     public void testCreateWeather() throws Exception{
 
@@ -42,7 +42,7 @@ public class Tests implements IAbstractTest {
         api.validateResponse(JSONCompareMode.LENIENT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
     }
 
-    @Test(description = "")
+    @Test(description = "Checks if it's in the City that was put in")
     @MethodOwner(owner = "Lautaro")
     public void testTexarkana() throws Exception {
         GetWeatherMethod api = new GetWeatherMethod();
