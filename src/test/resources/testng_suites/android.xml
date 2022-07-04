@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Lautaro Android tests" verbose="1" parallel="methods">
+
+	<test name="Android test">
+		<classes>
+			<class name="com.qaprosoft.carina.demo.MobileSampleTest" />
+		</classes>
+	</test>
+
+</suite>

@@ -14,25 +14,24 @@ import com.solvd.api.GetWeatherMethod;
 import com.solvd.api.PostWeatherMethod;
 
 public class Tests implements IAbstractTest {
-    
+
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
     @Test(description = "Validates against schema")
     @MethodOwner(owner = "Lautaro")
-    public void testGetWeather() throws Exception{
-            LOGGER.info("test");
-            GetWeatherMethod api = new GetWeatherMethod();
-            api.callAPIExpectSuccess();
-            api.validateResponseAgainstSchema("api/weather/_get/rs.schema");
+    public void testGetWeather() throws Exception {
+        LOGGER.info("test");
+        GetWeatherMethod api = new GetWeatherMethod();
+        api.callAPIExpectSuccess();
+        api.validateResponseAgainstSchema("api/weather/_get/rs.schema");
     }
 
     @Test(description = "Validates 4 times using rq.json")
     @MethodOwner(owner = "Lautaro")
-    public void testCreateWeather() throws Exception{
+    public void testCreateWeather() throws Exception {
 
         PostWeatherMethod api = new PostWeatherMethod();
         AtomicInteger counter = new AtomicInteger(0);
-
         api.callAPIWithRetry()
                 .peek(rs -> counter.getAndIncrement())
                 .until(rs -> counter.get() == 4)
@@ -53,14 +52,14 @@ public class Tests implements IAbstractTest {
 
     @Test(description = "")
     @MethodOwner(owner = "Lautaro")
-    public void testSomethingElse() throws Exception{
+    public void testSomethingElse() throws Exception {
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
     }
 
     @Test(description = "")
     @MethodOwner(owner = "Lautaro")
-    public void testSomething() throws Exception{
+    public void testSomething() throws Exception {
         GetWeatherMethod api = new GetWeatherMethod();
         api.callAPIExpectSuccess();
     }

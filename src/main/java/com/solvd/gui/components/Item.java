@@ -8,35 +8,35 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.solvd.gui.pages.ItemPage;
 
-public class Item extends AbstractUIObject{
+public class Item extends AbstractUIObject {
 
     @FindBy(xpath = ".//div/div/h4/a")
     private ExtendedWebElement itemLink;
 
     @FindBy(xpath = ".//div/div/h5")
     private ExtendedWebElement price;
-    
+
     @FindBy(xpath = ".//div/div/h5")
     private ExtendedWebElement description;
 
     public Item(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
-    
+
     public ItemPage openItemPage() {
         itemLink.click();
         return new ItemPage(driver);
     }
-    public String readName(){
-        assertElementPresent(itemLink);
+
+    public String readName() {
         return itemLink.getText();
     }
-    public String readPrice(){
-        assertElementPresent(price);
+
+    public String readPrice() {
         return price.getText();
     }
-    public String readDescription(){
-        assertElementPresent(description);
+
+    public String readDescription() {
         return description.getText();
     }
 }

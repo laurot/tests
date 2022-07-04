@@ -10,13 +10,13 @@ import com.solvd.gui.pages.CartPage;
 
 public class CartItem extends AbstractUIObject{
     
-    @FindBy(xpath = "/td[2]")
+    @FindBy(xpath = ".//td[2]")
     private ExtendedWebElement itemName;
 
-    @FindBy(xpath = "/td[3]")
+    @FindBy(xpath = ".//td[3]")
     private ExtendedWebElement itemPrice;
 
-    @FindBy(xpath = "/td[4]/a")
+    @FindBy(xpath = ".//td[4]/a")
     private ExtendedWebElement deleteFromCartBtn;
 
     public CartItem(WebDriver driver, SearchContext searchContext) {

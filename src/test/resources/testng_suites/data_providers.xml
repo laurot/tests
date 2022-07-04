@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Lautaro DataProviders Tests" parallel="tests">
+
+	<parameter name="stringParam::stringArg::custom string desc" value="string value" />
+	<parameter name="booleanParam::booleanArg::custom boolean desc" value="true" />
+	<parameter name="hiddenParam::hiddenArg::custom hidden desc" value="hidden value" />
+	<parameter name="choiceParam::choiceArg::custom choice desc" value="1, 2, 3" />
+
+	<test name="Sum operation test">
+		<parameter name="a" value="1"/>
+		<parameter name="b" value="2"/>
+		<parameter name="square" value="3"/>
+		<classes>
+			<class name="com.solvd.lautaro.DataProviderTests">
+				<methods>
+					<include name="testSubstractOperation"/>
+				</methods>
+			</class>
+		</classes>
+	</test>
+
+</suite>
