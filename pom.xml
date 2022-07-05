@@ -91,6 +91,7 @@
 				<version>3.3.0</version>
 				<executions>
 					<execution>
+						<?m2e execute onConfiguration?>
 						<id>copy</id>
 						<phase>initialize</phase>
 						<goals>

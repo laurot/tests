@@ -8,7 +8,6 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import java.util.HashMap;
 
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class DataProviderTests implements IAbstractTest{
@@ -31,32 +30,34 @@ public class DataProviderTests implements IAbstractTest{
         Assert.assertEquals(mult, Integer.valueOf(args.get("mult")));
     }
 
-    @Test(description = "Checks if the square column is correct", dataProvider = "DataProvider")
+    @Test(description = "Checks if the square is correct", dataProvider = "DataProvider")
     @MethodOwner(owner = "Lautaro")
-    @Parameters({"a", "b", "square"})
     @TestRailCases(testCasesId = "1")
-    public void testWithParameters(String a, String b, String square){
-        int aa = Integer.valueOf(a);
-        int bb = Integer.valueOf(b);
-        int srest = aa*aa-bb*bb;
-        Assert.assertEquals(srest, Integer.valueOf(square));
+    @XlsDataSourceParameters(path = "xls/tests.xlsx", sheet = "numbers", dsUid = "TUID", testRailColumn = "a")
+    public void testsquare(HashMap<String, String> args){
+        int a = Integer.valueOf(args.get("a"));
+        int b = Integer.valueOf(args.get("b"));
+        int srest = a*a-b*b;
+        Assert.assertEquals(srest, Integer.valueOf(args.get("square")));
+    }
+
+    @Test(description = "Checks if a is bigger than b", dataProvider = "DataProvider")
+    @MethodOwner(owner = "Lautaro")
+    @TestRailCases(testCasesId = "1")
+    @XlsDataSourceParameters(path = "xls/tests.xlsx", sheet = "numbers", dsUid = "TUID", testRailColumn = "a")
+    public void TestAB(HashMap<String, String> args){
+        int a = Integer.valueOf(args.get("a"));
+        int b = Integer.valueOf(args.get("b"));
+        Assert.assertTrue(a < b);
     }
 
     @Test(description = "Checks if the sum of the sumbers is right", dataProvider = "DataProvider")
     @MethodOwner(owner = "Lautaro")
     @TestRailCases(testCasesId = "1")
-    @XlsDataSourceParameters(path = "xls/tests.xlsx", sheet = "numbers", dsUid = "TUID", testRailColumn = "a")
-    public void test2(HashMap<String, String> args){
-        int sum = Integer.valueOf(args.get("a"))+Integer.valueOf(args.get("b"));
-        Assert.assertEquals(sum, Integer.valueOf(args.get("sum")));
-    }
-
-    @Test(description = "Checks if the sum of the sumbers is right", dataProvider = "DataProvider")
-    @MethodOwner(owner = "Lautaro")
-    @TestRailCases(testCasesId = "1")
-    @XlsDataSourceParameters(path = "xls/tests.xlsx", sheet = "numbers", dsUid = "TUID", testRailColumn = "a")
+    @XlsDataSourceParameters(path = "xls/tests.xlsx", sheet = "secondsheet", dsUid = "TUID", testRailColumn = "a")
     public void test3(HashMap<String, String> args){
-        int sum = Integer.valueOf(args.get("a"))+Integer.valueOf(args.get("b"));
-        Assert.assertEquals(sum, Integer.valueOf(args.get("sum")));
+        int age = Integer.valueOf(args.get("age"));
+        boolean isAdult = Boolean.parseBoolean(args.get("adult")) ;
+        Assert.assertTrue((age >= 18) == isAdult);
     }
 }
