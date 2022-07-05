@@ -72,7 +72,7 @@ public class WebTests implements IAbstractTest {
         softAssert.assertEquals(itemPage.readName(), "Sony vaio i7");
     }
 
-    @Test(description = "")
+    @Test(description = "Test navbar homepage")
     @MethodOwner(owner = "Lautaro")
     public void SomethingTest() {
 

@@ -10,8 +10,11 @@ import org.skyscreamer.jsonassert.JSONCompareMode;
 import com.qaprosoft.apitools.validation.JsonCompareKeywords;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
+import com.solvd.api.GetWeatherByPositionMethod;
 import com.solvd.api.GetWeatherMethod;
 import com.solvd.api.PostWeatherMethod;
+
+import io.netty.util.internal.ThreadLocalRandom;
 
 public class Tests implements IAbstractTest {
 
@@ -50,17 +53,21 @@ public class Tests implements IAbstractTest {
                 .contains("Texarkana");
     }
 
-    @Test(description = "")
+    @Test(description = "Checks another specific city")
     @MethodOwner(owner = "Lautaro")
     public void testSomethingElse() throws Exception {
-        GetWeatherMethod api = new GetWeatherMethod();
-        api.callAPIExpectSuccess();
+        GetWeatherByPositionMethod api = new GetWeatherByPositionMethod("-35.10", "-60.44");
+        api.callAPIExpectSuccess()
+            .asString()
+            .contains("Mechita");
     }
 
     @Test(description = "")
     @MethodOwner(owner = "Lautaro")
     public void testSomething() throws Exception {
-        GetWeatherMethod api = new GetWeatherMethod();
+        String lat = Double.toString(ThreadLocalRandom.current().nextDouble(-90, 90));
+        String lon = Double.toString(ThreadLocalRandom.current().nextDouble(-90, 90));
+        GetWeatherByPositionMethod api = new GetWeatherByPositionMethod(lat, lon);
         api.callAPIExpectSuccess();
     }
 }
