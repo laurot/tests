@@ -3,3 +3,4 @@
 target
 src/main/resources/crypto.key
 reports
+src/main/resources/agent.properties
